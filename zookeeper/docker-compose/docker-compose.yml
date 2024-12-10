@@ -1,0 +1,24 @@
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper:3.9.3
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper_data:/data
+      - zookeeper_datalog:/datalog
+
+volumes:
+  zookeeper_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./zookeeper/data
+      o: bind
+  zookeeper_datalog:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./zookeeper/datalog
+      o: bind

@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:17.2
+    container_name: postgres
+    environment:
+      POSTGRES_USER: luna
+      POSTGRES_PASSWORD: luna@202412
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./postgresql/data
+      o: bind

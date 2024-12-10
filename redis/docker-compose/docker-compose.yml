@@ -1,0 +1,19 @@
+version: '3'
+services:
+  redis:
+    image: redis:7.4.1
+    container_name: redis
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=luna@202412
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./redis/data
+      o: bind
